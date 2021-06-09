@@ -94,7 +94,6 @@ def run(path_input,show=False,save_fig=False,save_csv=False,wafer=False,file_inp
     for i in path_list:
         tree = elemTree.parse(i)
         testsiteinfo = list(tree.iter('TestSiteInfo'))[0]
-        print(path_list[0])
         if testsiteinfo.attrib['TestSite'] in anal:
             filename = file_list[j].split('\\')[-1][:-4]
             for k in range(0,len(testsiteinfo_list)):
@@ -107,7 +106,7 @@ def run(path_input,show=False,save_fig=False,save_csv=False,wafer=False,file_inp
             name = tree.find('ElectroOpticalMeasurements/ModulatorSite/Modulator')
             name_list.append(name.attrib['Name'])
             plt.figure(figsize = (18,12))
-            plt.subplot(234)
+            plt.subplot(224)
             IVvoltage = tree.findall(
                 'ElectroOpticalMeasurements/ModulatorSite/Modulator/PortCombo/IVMeasurement/Voltage')
             IVcurrent = tree.findall(
@@ -138,13 +137,13 @@ def run(path_input,show=False,save_fig=False,save_csv=False,wafer=False,file_inp
                 'ElectroOpticalMeasurements/ModulatorSite/Modulator/PortCombo/WavelengthSweep')
             ILplot.find_DCbias(DCbias)
             max_trans_list.append(ILplot.max_trans(IL))
-            plt.subplot(231)
+            plt.subplot(221)
             ILplot.IL_raw_plot(Wavelength,IL)
 
-            plt.subplot(232)
+            plt.subplot(222)
             ILplot.IL_fitting_ref(Wavelength,IL,8)
 
-            plt.subplot(233)
+            plt.subplot(223)
             ILplot.IL_processed_plot(Wavelength,IL,8)
             IL_R_2 =R_square.get_R2()
             IL_R2_list.append(IL_R_2)

@@ -78,7 +78,6 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyApp()
     app.exec_()
-    print(wafers)
 
 run(path_input,show,save_fig,save_csv,wafers)
 # '.\data\**\*.xml'
